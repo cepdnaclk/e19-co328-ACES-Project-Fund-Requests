@@ -1,6 +1,8 @@
 ___
 # ACES Project Fund Requests
-![ACES Logo](./docs/images/aces_logo.jpg)
+<p align="center">
+  <img src="./docs/images/aces_logo.jpg" alt="ACES Logo" width="500"/>
+</p>
 
 ___
 
