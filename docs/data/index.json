@@ -1,30 +1,61 @@
 {
+    "title": "ACES Fund Requests"
     "team": [
         {
-            "name": "Team Member Name 1",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Amanda W.S.",
+            "email": "e19017@eng.pdn.ac.lk",
+            "eNumber": "E/19/017"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Dharmarathne B.A.M.I.E.",
+            "email": "e19074@eng.pdn.ac.lk",
+            "eNumber": "E/19/074"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Dissanayake P.A.M.",
+            "email": "e19091@eng.pdn.ac.lk",
+            "eNumber": "E/19/091"
+        },
+        {
+            "name": "M.D. Galappaththi",
+            "email": "e19111@eng.pdn.ac.lk",
+            "eNumber": "E/19/111"
+        },
+        {
+            "name": "Jayathunga W.W.K.",
+            "email": "e19166@eng.pdn.ac.lk",
+            "eNumber": "E/19/166"
+        },
+        {
+            "name": "Madhushanka M.P.J.",
+            "email": "e19227@eng.pdn.ac.lk",
+            "eNumber": "E/19/227"
+        },
+        {
+            "name": "Dharmarathne B.A.M.I.E.",
+            "email": "e19074@eng.pdn.ac.lk",
+            "eNumber": "E/19/074"
+        },
+        {
+            "name": "Pushpakumara R.M.S.P.",
+            "email": "e19304@eng.pdn.ac.lk",
+            "eNumber": "E/19/304"
+        },
+        {
+            "name": "Ekanayake E.M.M.U.B.",
+            "email": "e19083@eng.pdn.ac.lk",
+            "eNumber": "E/19/083"
         }
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Ms. Yashudha Vimukthi",
+            "email": "yashodhav@eng.pdn.ac.lk"
         },
         {
-            "name": "Supervisor 2",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Mr. Ziyan Maraikar",
+            "email": "ziyanm@eng.pdn.ac.lk"
         }
     ],
-    "tags": []
+    "tags": ["Software Engineering", "Maven"]
 }
