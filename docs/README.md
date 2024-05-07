@@ -3,7 +3,7 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: e19-CO328-ACES-Project-Fund-Requests
+repository-name: e19-co328-ACES-Project-Fund-Requests
 title: ASES Project Fund Requests
 ---
 
@@ -46,8 +46,8 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e19-CO328-ACES-Project-Fund-Requests)
-- [Project Page](https://cepdnaclk.github.io/e19-CO328-ACES-Project-Fund-Requests/)
+- [Project Repository](https://github.com/cepdnaclk/e19-co328-ACES-Project-Fund-Requests)
+- [Project Page](https://cepdnaclk.github.io/e19-co328-ACES-Project-Fund-Requests/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
