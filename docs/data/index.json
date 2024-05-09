@@ -1,5 +1,4 @@
 {
-    "title": "ACES Fund Requests"
     "team": [
         {
             "name": "Amanda W.S.",
@@ -57,5 +56,8 @@
             "email": "ziyanm@eng.pdn.ac.lk"
         }
     ],
-    "tags": ["Software Engineering", "Maven"]
+    "tags": [
+        "Software Engineering",
+        "Maven"
+    ]
 }
