@@ -22,3 +22,8 @@ The system is designed to handle a large number of requests and users simultaneo
 
 ## 🏢 Domain Requirements
 The system complies with all relevant financial regulations and standards (Regulatory Compliance), provides a clear audit trail for all approvals and financial transactions (Auditability), ensures that requests align with available budgets (Budget Alignment), and can generate detailed reports on fund utilization, pending requests, and historical data (Reporting).
+
+## 👩‍💻 Software Modelling
+### Use Case Diagram
+
+
