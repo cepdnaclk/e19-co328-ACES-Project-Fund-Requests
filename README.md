@@ -24,6 +24,10 @@ The system is designed to handle a large number of requests and users simultaneo
 The system complies with all relevant financial regulations and standards (Regulatory Compliance), provides a clear audit trail for all approvals and financial transactions (Auditability), ensures that requests align with available budgets (Budget Alignment), and can generate detailed reports on fund utilization, pending requests, and historical data (Reporting).
 
 ## 👩‍💻 Software Modelling
+
 ### Use Case Diagram
+
+A Use Case Diagram is a type of behavioral diagram defined by and created from a Use-case analysis. Its purpose is to present a graphical overview of the functionality provided by a system in terms of actors, their goals (represented as use cases), and any dependencies between those use cases.
+[Use Case Diagram](https://lucid.app/lucidchart/e5112998-f890-4847-aa55-93884899af6c/edit?viewport_loc=2249%2C5388%2C10934%2C4900%2C.Q4MUjXso07N&invitationId=inv_aef1d24a-24a8-4c66-a89b-afcd76e80282)
 
 
