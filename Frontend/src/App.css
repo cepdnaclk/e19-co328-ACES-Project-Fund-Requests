@@ -1,0 +1,40 @@
+.submit-btn {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: monospace;
+    color: #000000;
+    font-size: 18px;
+    background: #ffffff;
+    padding: 10px 40px 10px 40px;
+    border: solid #000000 2px;
+    text-decoration: none;
+}
+
+.submit-btn:hover {
+    color: white;
+    background: #000000;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(../Poppins/Poppins-Regular.ttf);
+    /* src: url(../public/Poppins/Poppins-Regular.ttf); */
+}
+.AdminUiTexts {
+    font-family: poppins;
+}
+.nextButton {
+    font-family: poppins;
+}
+.grids {
+    max-width: 500px; 
+    min-width: 300px; 
+}
+
+/* .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} */
