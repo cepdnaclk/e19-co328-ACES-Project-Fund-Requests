@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
 const mongoDB =
-  "mongodb+srv://e19210:IsotkvutF3XHtIyh@cluster0.tthbjjk.mongodb.net/local_library?retryWrites=true&w=majority";
+  "mongodb+srv://root:wasuki1999@cluster0.iq9l0yr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 main().catch((err) => console.log(err));
 async function main() {
