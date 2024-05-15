@@ -3,8 +3,8 @@ import Header from "../components/Header";
 import {
   Input,
   Button,
-  FormControl,
-  FormLabel,
+  //FormControl,
+  //FormLabel,
   Textarea,
 } from "@chakra-ui/react";
 import { Text, Grid, GridItem, Box } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ import FooterSection from "../components/FooterSection";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const inputBorderColor = "#97bfd4";
+//const inputBorderColor = "#97bfd4";
 const gridBackgrougndColor = "#F5F5F5";
 const inputFieldTextColor = "black";
 const labelColor = "black";
@@ -33,7 +33,7 @@ const No = () => {
       };
       axios
         .post("http://localhost:5000/denied", obj)
-        .then((res) => {
+        .then(() => {
           setIsLoading(false);
           navigate("/admin");
         })
@@ -194,6 +194,6 @@ const No = () => {
 };
 
 export default No;
-function register(arg0: string) {
-  throw new Error("Function not implemented.");
-}
+//function register(arg0: string) {
+  //throw new Error("Function not implemented.");
+//}

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+//import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Box,
-  Container,
+  //Container,
   Divider,
   Grid,
-  GridItem,
+  //GridItem,
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Skeleton,
-  SkeletonCircle,
+  //Skeleton,
+  //SkeletonCircle,
   SkeletonText,
   Stack,
   Text,
@@ -29,6 +29,7 @@ import axios from "axios";
 import { PreviousRequest } from "../models/PreviousRequest";
 import { DUserTokenInterface } from "../models/TokenMoodel";
 import { GoogleLogin } from "@react-oauth/google";
+//import { AnyError } from "mongodb";
 //import axios from "axios";
 
 // interface RequestData {
@@ -121,19 +122,22 @@ const Admin = () => {
               You need to login with your eng email
             </Text>
             <GoogleLogin
-              onSuccess={(credentialResponse: { credential: any }) => {
+              onSuccess={(credentialResponse: { credential?: any }) => {
                 console.log(credentialResponse);
-
-                var decodedUserToken: DUserTokenInterface = jwt_decode(
-                  credentialResponse.credential!
-                );
-
-                setUserToken(decodedUserToken);
-
-                console.log(decodedUserToken);
-
+              
+                if (credentialResponse.credential) {
+                  var decodedUserToken: DUserTokenInterface = jwt_decode(
+                    credentialResponse.credential
+                  );
+              
+                  setUserToken(decodedUserToken);
+              
+                  console.log(decodedUserToken);
+                }
+              
                 onClose();
               }}
+              
               onError={() => {
                 onOpen();
                 console.log("Login Failed");

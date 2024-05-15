@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import { Input, Button, FormControl, FormLabel } from "@chakra-ui/react";
+import { Input, Button, FormControl } from "@chakra-ui/react";
 import { Text, Grid, GridItem, Box } from "@chakra-ui/react";
 import FooterSection from "../components/FooterSection";
 import axios from "axios";

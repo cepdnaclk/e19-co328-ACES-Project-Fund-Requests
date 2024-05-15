@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Link } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
 
 const ViewMoreButton: React.FC = () => {
   return (

@@ -8,13 +8,13 @@ import { useSteps } from "@chakra-ui/react";
 
 import NextButton from "../components/NextButton";
 import FormSection3 from "../components/FormSection3";
-import FormSection4 from "../components/FormSection4";
+//import FormSection4 from "../components/FormSection4";
 import FormSection2 from "../components/FormSection2";
 import ReviewSection from "../components/ReviewSection";
 
-import QualifiedSection from "../components/QualifiedSection";
+//import QualifiedSection from "../components/QualifiedSection";
 import FooterSection from "../components/FooterSection";
-import DeniedSection from "../components/DeniedSection";
+//import DeniedSection from "../components/DeniedSection";
 import FundRequest from "../classes/fund_request";
 
 import { DUserTokenInterface } from "../models/TokenMoodel";

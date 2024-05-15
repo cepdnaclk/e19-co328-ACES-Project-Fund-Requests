@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import NextButtonAdmin from "./NextButtonAdmin";
 //import { SetStateAction, useState } from "react";
 import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import {
@@ -29,7 +29,7 @@ const AdminHome1 = () => {
   //   setCurrentStep(step);
   // };
 
-  const [data, setData] = useState(null);
+  const [setData] = useState(null);
   const { id } = useParams(); // Dynamically obtain the 'id' from the URL
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 //import FooterSection from "../components/FooterSection";
 import React from "react";
 import Header from "../components/Header";
-import { Input, Button, FormControl, FormLabel, Flex } from "@chakra-ui/react";
+import { Input, Button, Flex } from "@chakra-ui/react";
 // import React, { useState } from 'react';
 
 import {
