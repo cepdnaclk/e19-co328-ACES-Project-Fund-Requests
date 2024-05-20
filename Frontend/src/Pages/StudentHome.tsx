@@ -38,7 +38,6 @@ function StudentHome({ previousRequest, userToken }: Props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitted2, setIsSubmitted2] = useState(false);
   const [isSubmitted3, setIsSubmitted3] = useState(false);
-  const [finish, setFinish] = useState(false);
 
   let formElements = [
     <FormSection1
@@ -70,10 +69,9 @@ function StudentHome({ previousRequest, userToken }: Props) {
         setIsSubmitted3(status);
       }}
       onFinish={(finishingStatus) => {
-        setFinish(finishingStatus);
+        console.log('Finished status:', finishingStatus);
       }}
     ></FormSection3>,
-
     // <FormSection4></FormSection4>,
   ];
 
@@ -85,44 +83,43 @@ function StudentHome({ previousRequest, userToken }: Props) {
   if (previousRequest != null) {
     return (
       <>
-        {" "}
-        <Header></Header>
+        <Header />
         <ReviewSection
           requestObject={requestObject}
           previousRequest={previousRequest}
           userToken={userToken}
-        ></ReviewSection>
+        />
       </>
     );
   }
 
   return (
     <>
-      <Header></Header>
-      <Description></Description>
+      <Header />
+      <Description />
       {/* This is the way to create the changing stepper */}
-      <FormStepper currentStep={activeStep}></FormStepper>
+      <FormStepper currentStep={activeStep} />
       {updateFormSection(activeStep)}
       {/* <FormSection1></FormSection1> */}
-      {(isSubmitted && activeStep == 0) || (isSubmitted2 && activeStep == 1) ? (
+      {(isSubmitted && activeStep === 0) || (isSubmitted2 && activeStep === 1) ? (
         <NextButton
           currrentStep={activeStep}
           onStepperChange={(index) => {
             setActiveStep(index);
             console.log("index: " + index);
           }}
-        ></NextButton>
+        />
       ) : null}
-      {isSubmitted3 && activeStep == 2 ? (
+      {isSubmitted3 && activeStep === 2 ? (
         <ReviewSection
           requestObject={requestObject}
           previousRequest={previousRequest}
           userToken={userToken}
-        ></ReviewSection>
+        />
       ) : null}
       {/* {activeStep == 2 ? <QualifiedSection></QualifiedSection> : null} */}
       {/* {activeStep == 2 ? <DeniedSection></DeniedSection> : null} */}
-      <FooterSection></FooterSection>
+      <FooterSection />
     </>
   );
 }
