@@ -24,8 +24,8 @@ import * as z from "zod";
 import axios from "axios";
 import FundRequest from "../classes/fund_request";
 
-//const ACCEPTED_FILE_TYPES = ["application/pdf"];
-//const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+const ACCEPTED_FILE_TYPES = ["application/pdf"];
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 interface Props {
   onSetRequestObject: (requestobj: FundRequest) => void;
@@ -125,7 +125,7 @@ const FormSection2 = ({
   //   null
   // );
 
-  //const [sectionrequestObject, setSectionRequestObject] =
+  const [sectionrequestObject, setSectionRequestObject] =
     useState<FundRequest | null>(requestObject);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

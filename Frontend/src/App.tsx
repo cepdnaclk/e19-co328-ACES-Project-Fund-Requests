@@ -3,15 +3,15 @@ import { useEffect, useState } from "react"; // Import useEffect
 
 import {
   Text,
-  //Button,
+  Button,
   useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  //ModalCloseButton,
+  ModalCloseButton,
   ModalBody,
-  //Link,
+  Link,
 } from "@chakra-ui/react";
 
 import { GoogleLogin } from "@react-oauth/google";
