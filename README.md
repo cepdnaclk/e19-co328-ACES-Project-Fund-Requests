@@ -30,4 +30,7 @@ The system complies with all relevant financial regulations and standards (Regul
 A Use Case Diagram is a type of behavioral diagram defined by and created from a Use-case analysis. Its purpose is to present a graphical overview of the functionality provided by a system in terms of actors, their goals (represented as use cases), and any dependencies between those use cases.
 [Use Case Diagram](https://lucid.app/lucidchart/e5112998-f890-4847-aa55-93884899af6c/edit?viewport_loc=2249%2C5388%2C10934%2C4900%2C.Q4MUjXso07N&invitationId=inv_aef1d24a-24a8-4c66-a89b-afcd76e80282)
 
+### Activity Diagram
 
+An Activity Diagram shows the system's dynamic aspects by depicting the activities' workflow. For AFMS, the Activity Diagram will detail the sequence of actions involved in the fund request process, from submission by students to review and approval by authorities, and notification of outcomes. It highlights the flow of control from one activity to another and any decision points in the process.
+[Activity Diagram](https://lucid.app/lucidchart/d9b854f9-3ec4-43f1-a16a-6a79f6e77aba/edit?viewport_loc=-386%2C-1149%2C3558%2C1445%2C0_0&invitationId=inv_c35cfa5e-5b9c-4678-9169-3dcdc3404ac7)
