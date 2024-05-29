@@ -37,5 +37,5 @@ An Activity Diagram shows the system's dynamic aspects by depicting the activiti
 
 ### Class Diagram
 
-A class diagram is a type of static structure diagram in the Unified Modeling Language (UML) that describes the structure of a system by showing its classes, their attributes, operations (or methods), and the relationships among objects. It is a crucial part of object-oriented modeling and is used to visually represent and design the system architecture.[Class Diagram](https://lucid.app/lucidchart/437437e5-0ed2-4f7e-a883-8ccb2f5c5341/edit?invitationId=inv_5caf3fa6-7af0-437b-9a55-1245ce12efaf&page=0_0#)
+A class diagram is a type of static structure diagram in the Unified Modeling Language (UML) that describes the structure of a system by showing its classes, their attributes, operations (or methods), and the relationships among objects. It is a crucial part of object-oriented modeling and is used to visually represent and design the system architecture.[Class Diagram](https://lucid.app/lucidchart/437437e5-0ed2-4f7e-a883-8ccb2f5c5341/edit?invitationId=inv_5caf3fa6-7af0-437b-9a55-1245ce12efaf&page=0_0#) 
 
