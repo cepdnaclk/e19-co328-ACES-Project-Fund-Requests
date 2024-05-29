@@ -34,3 +34,8 @@ A Use Case Diagram is a type of behavioral diagram defined by and created from a
 
 An Activity Diagram shows the system's dynamic aspects by depicting the activities' workflow. For AFMS, the Activity Diagram will detail the sequence of actions involved in the fund request process, from submission by students to review and approval by authorities, and notification of outcomes. It highlights the flow of control from one activity to another and any decision points in the process.
 [Activity Diagram](https://lucid.app/lucidchart/d9b854f9-3ec4-43f1-a16a-6a79f6e77aba/edit?viewport_loc=-386%2C-1149%2C3558%2C1445%2C0_0&invitationId=inv_c35cfa5e-5b9c-4678-9169-3dcdc3404ac7)
+
+### Class Diagram
+
+A class diagram is a type of static structure diagram in the Unified Modeling Language (UML) that describes the structure of a system by showing its classes, their attributes, operations (or methods), and the relationships among objects. It is a crucial part of object-oriented modeling and is used to visually represent and design the system architecture.[Class Diagram](https://lucid.app/lucidchart/437437e5-0ed2-4f7e-a883-8ccb2f5c5341/edit?invitationId=inv_5caf3fa6-7af0-437b-9a55-1245ce12efaf&page=0_0#)
+
