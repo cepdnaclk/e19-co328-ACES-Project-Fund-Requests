@@ -3,6 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 const FooterSection = () => {
   return (
     <Box
+      data-testid="footer-section"  // new addition
       textAlign={"center"}
       bgColor={"#051B26"}
       width={"100%"}
