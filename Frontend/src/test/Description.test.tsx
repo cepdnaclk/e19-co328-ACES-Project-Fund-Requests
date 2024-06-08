@@ -1,4 +1,5 @@
 
+
 import { render, screen } from '@testing-library/react';
 import Description from '../components/Description'; // Adjust the import path as necessary
 
@@ -22,3 +23,4 @@ describe('Description Component', () => {
     expect(descriptionElement).toBeTruthy();
   });
 });
+
