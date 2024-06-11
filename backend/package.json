@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,9 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.3.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^7.0.0"
   }
 }
