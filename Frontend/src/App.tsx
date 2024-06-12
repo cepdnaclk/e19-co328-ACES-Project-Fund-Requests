@@ -25,6 +25,7 @@ import AdminHome2 from "./Pages/AdminHome2";
 import AdminHome3 from "./Pages/AdminHome3";
 import Yes from "./Pages/Yes";
 import No from "./Pages/No";
+import Chatbotpage from "./Pages/Chatbotpage";
 import axios from "axios";
 
 import { DUserTokenInterface } from "./models/TokenMoodel";
@@ -144,6 +145,7 @@ function App() {
         <Route path="/admin3" element={<AdminHome3 />} />
         <Route path="/yes" element={<Yes />} />
         <Route path="/no" element={<No />} />
+        <Route path="/faqbot" element={<Chatbotpage />} />
       </Routes>
     </BrowserRouter>
   );
