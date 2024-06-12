@@ -4,6 +4,7 @@ const axios = require("axios");
 const multer = require("multer");
 const fs = require("fs");
 const app = express();
+const dialogflowRoute = require('./routes/dialogflow');
 
 const bodyParser = require("body-parser");
 
@@ -21,7 +22,7 @@ app.use(cors());
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-
+app.use('/api', dialogflowRoute);
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
 const mongoDB =
