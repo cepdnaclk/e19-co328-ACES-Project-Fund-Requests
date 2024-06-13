@@ -13,7 +13,7 @@ const FooterSection = () => {
         Department of Computer Engineering - University of Peradeniya
       </Text>
       <Text fontSize={"12px"} color={"#aaa5a58c"}>
-        Last Build: 30/08/2023
+        Last Build: 13/06/2024
       </Text>
     </Box>
   );
