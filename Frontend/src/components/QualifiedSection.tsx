@@ -1,8 +1,8 @@
-import { Box, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Image, Link, Text, IconButton } from "@chakra-ui/react";
 import success from "../assets/images/successR.png";
 import axios from "axios";
 import { DUserTokenInterface } from "../models/TokenMoodel";
-
+import { FaQuestionCircle } from "react-icons/fa";
 interface Props {
   userToken: DUserTokenInterface | null;
 }
@@ -41,6 +41,17 @@ const QualifiedSection = ({ userToken }: Props) => {
       >
         Submit another
       </Link>
+      <Box position="fixed" bottom="4" right="4">
+        <Link href="/faqbot">
+          <IconButton
+            aria-label="FAQ"
+            icon={<FaQuestionCircle />}
+            size="lg"
+            colorScheme="teal"
+            isRound
+          />
+        </Link>
+      </Box>
     </Box>
   );
 };

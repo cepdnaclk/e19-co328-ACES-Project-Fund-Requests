@@ -1,5 +1,5 @@
-import { Text, Grid, GridItem, Input, Box } from "@chakra-ui/react";
-
+import { Text, Grid, GridItem, Input, Box, Link, IconButton } from "@chakra-ui/react";
+import { FaQuestionCircle } from "react-icons/fa";
 import { useToast } from "@chakra-ui/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -389,6 +389,17 @@ const FormSection1 = ({
           SUBMIT
         </button>
       </form>
+      <Box position="fixed" bottom="4" right="4">
+        <Link href="/faqbot">
+          <IconButton
+            aria-label="FAQ"
+            icon={<FaQuestionCircle />}
+            size="lg"
+            colorScheme="teal"
+            isRound
+          />
+        </Link>
+      </Box>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
-import { Box, Button, Grid, GridItem, Text } from "@chakra-ui/react";
-
+import { Box, Button, Grid, GridItem, Text, Link, IconButton } from "@chakra-ui/react";
+import { FaQuestionCircle } from "react-icons/fa";
 import { PreviousRequest } from "../models/PreviousRequest";
 import { DUserTokenInterface } from "../models/TokenMoodel";
 import FundRequest from "../classes/fund_request";
@@ -236,6 +236,17 @@ const ReviewSection = ({
             </GridItem>
           </Grid>
         </Box>
+        <Box position="fixed" bottom="4" right="4">
+        <Link href="https://your-faq-page-link.com" isExternal>
+          <IconButton
+            aria-label="FAQ"
+            icon={<FaQuestionCircle />}
+            size="lg"
+            colorScheme="teal"
+            isRound
+          />
+        </Link>
+      </Box>
       </Box>
 
       {previousRequest?.lecturer_response == "approved" &&

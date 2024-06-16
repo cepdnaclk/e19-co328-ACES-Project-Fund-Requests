@@ -11,6 +11,8 @@ const Chatbot: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [chat, setChat] = useState<ChatMessage[]>([]);
 
+  
+
   const sendMessage = async () => {
     if (message.trim() === '') return;
 
