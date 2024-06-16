@@ -21,15 +21,20 @@ import {
 
 import jwt_decode from "jwt-decode";
 
-import Header from "../components/Header";
-import FooterSection from "../components/FooterSection";
-import CardComponent from "./CardComponent";
-import cardImage from "../assets/images/cardImage.webp";
+import Header from "../../components/Header";
+import FooterSection from "../../components/FooterSection";
+import CardComponent from "../CardComponent";
+import cardImage from "../../assets/images/cardImage.webp";
 import axios from "axios";
-import { PreviousRequest } from "../models/PreviousRequest";
-import { DUserTokenInterface } from "../models/TokenMoodel";
-import { GoogleLogin } from "@react-oauth/google";
-//import axios from "axios";
+import { PreviousRequest } from "../../models/PreviousRequest";
+import { DUserTokenInterface } from "../../models/TokenMoodel";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import LoginModal from "../../components/LoginModal";
+
+// interface AdminProps {
+//   userToken: DUserTokenInterface;
+// }
+
 
 // interface RequestData {
 //     Project_title: string;
@@ -40,7 +45,7 @@ import { GoogleLogin } from "@react-oauth/google";
 //   }
 
 const Admin = () => {
-  const [allRequests, setAllReusts] = useState<PreviousRequest[]>([]);
+  const [allRequests, setAllRequests] = useState<PreviousRequest[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,13 +62,12 @@ const Admin = () => {
       console.log("Closed the modal");
 
       setIsLoading(true);
-
       axios
         .get("http://localhost:5000/getall")
         .then((response) => {
           console.log(response.data.docs[0]);
 
-          setAllReusts(response.data.docs);
+          setAllRequests(response.data.docs);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -94,7 +98,7 @@ const Admin = () => {
 
   return (
     <>
-      <Modal
+      <LoginModal isOpen={isOpen} onClose={onClose} setUserToken={setUserToken} />     {/* <Modal
         closeOnOverlayClick={false}
         isOpen={isOpen}
         onClose={onClose}
@@ -121,17 +125,17 @@ const Admin = () => {
               You need to login with your eng email
             </Text>
             <GoogleLogin
-              onSuccess={(credentialResponse: { credential: any }) => {
+              onSuccess={(credentialResponse: CredentialResponse) => {
                 console.log(credentialResponse);
-
+            
                 var decodedUserToken: DUserTokenInterface = jwt_decode(
                   credentialResponse.credential!
                 );
-
+            
                 setUserToken(decodedUserToken);
-
+            
                 console.log(decodedUserToken);
-
+            
                 onClose();
               }}
               onError={() => {
@@ -141,7 +145,7 @@ const Admin = () => {
             />
           </ModalBody>
         </ModalContent>
-      </Modal>
+      </Modal> */}
       <Header />
       <Box pb={"107px"}>
         <form className="AdminUiTexts">

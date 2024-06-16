@@ -1,6 +1,6 @@
 //import FooterSection from "../components/FooterSection";
 import React from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { Input, Button, FormControl, FormLabel, Flex } from "@chakra-ui/react";
 // import React, { useState } from 'react';
 
@@ -12,7 +12,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import FooterSection from "../components/FooterSection";
+import FooterSection from "../../components/FooterSection";
 
 //const inputBorderColor = "#97bfd4";
 //const gridBackgrougndColor = "#F5F5F5";

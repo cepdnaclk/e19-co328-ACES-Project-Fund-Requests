@@ -1,7 +1,7 @@
 //import { SetStateAction, useState } from "react";
-import FooterSection from "../components/FooterSection";
-import Header from "../components/Header";
-import NextButtonAdmin from "./NextButtonAdmin";
+import FooterSection from "../../components/FooterSection";
+import Header from "../../components/Header";
+import NextButtonAdmin from "../NextButtonAdmin";
 import { Link } from "react-router-dom";
 
 import {
