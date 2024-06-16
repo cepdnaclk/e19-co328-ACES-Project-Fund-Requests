@@ -62,7 +62,7 @@ const Chatbot: React.FC = () => {
           onKeyPress={handleKeyPress}
           placeholder="Type a message..."
         />
-        <Button onClick={sendMessage} colorScheme="teal">
+        <Button onClick={sendMessage} bgGradient="linear(to-r, #0F435F, #427F9F)">
           Send
         </Button>
       </VStack>
