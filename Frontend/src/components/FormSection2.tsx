@@ -9,8 +9,10 @@ import {
   RadioGroup,
   Stack,
   Radio,
+  Link,
+  IconButton
 } from "@chakra-ui/react";
-
+import { FaQuestionCircle } from "react-icons/fa";
 
 import { useToast } from "@chakra-ui/react";
 
@@ -24,8 +26,8 @@ import * as z from "zod";
 import axios from "axios";
 import FundRequest from "../classes/fund_request";
 
-const ACCEPTED_FILE_TYPES = ["application/pdf"];
-const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+//const ACCEPTED_FILE_TYPES = ["application/pdf"];
+//const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 interface Props {
   onSetRequestObject: (requestobj: FundRequest) => void;
@@ -125,8 +127,8 @@ const FormSection2 = ({
   //   null
   // );
 
-  const [sectionrequestObject, setSectionRequestObject] =
-    useState<FundRequest | null>(requestObject);
+  //const [sectionrequestObject, setSectionRequestObject] =
+    //useState<FundRequest | null>(requestObject);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -327,6 +329,7 @@ const FormSection2 = ({
               border={
                 errors.title ? `1px solid red` : `1px solid ${inputBorderColor}`
               }
+              data-testid="project-title-input"
             ></Input>
             {errors.title && (
               <Text fontSize="xs" color="red">
@@ -368,6 +371,7 @@ const FormSection2 = ({
                   ? `1px solid red`
                   : `1px solid ${inputBorderColor}`
               }
+              data-testid="project-description-input"
             ></Textarea>
             {errors.description && (
               <Text fontSize="xs" color="red">
@@ -485,16 +489,16 @@ const FormSection2 = ({
               }}
             >
               <Stack direction="column">
-                <Radio {...register("projectType")} paddingY={"5px"} value="1">
+                <Radio {...register("projectType")} paddingY={"5px"} value="1" data-testid="project-type-radio-1" >
                   Coursework
                 </Radio>
-                <Radio {...register("projectType")} paddingY={"5px"} value="2">
+                <Radio {...register("projectType")} paddingY={"5px"} value="2" data-testid="project-type-radio-2" >
                   Competition
                 </Radio>
-                <Radio {...register("projectType")} paddingY={"5px"} value="3">
+                <Radio {...register("projectType")} paddingY={"5px"} value="3" data-testid="project-type-radio-3" >
                   Hobby
                 </Radio>
-                <Radio {...register("projectType")} paddingY={"5px"} value="4">
+                <Radio {...register("projectType")} paddingY={"5px"} value="4" data-testid="project-type-radio-4" >
                   Other
                 </Radio>
               </Stack>
@@ -588,6 +592,7 @@ const FormSection2 = ({
             id="fileInput"
             accept=".pdf"
             onChange={handleFileChange}
+            data-testid="fileInput"
           />
 
           {/* {errors.pdfFile && (
@@ -602,7 +607,7 @@ const FormSection2 = ({
           marginBottom={6}
           bgColor={gridBackgrougndColor}
         >
-          <Checkbox {...register("isChecked")} spacing={5}>
+          <Checkbox {...register("isChecked")} spacing={5} data-testid="agreement-checkbox">
             I, the Project Lead hereby confirm the above-mentioned information
             is accurate as per my understanding.
           </Checkbox>
@@ -636,6 +641,17 @@ const FormSection2 = ({
           Submit
         </button>
       </form>
+      <Box position="fixed" bottom="4" right="4">
+        <Link href="/faqbot">
+          <IconButton
+            aria-label="FAQ"
+            icon={<FaQuestionCircle />}
+            size="lg"
+            colorScheme="teal"
+            isRound
+          />
+        </Link>
+      </Box>
     </Box>
   );
 };

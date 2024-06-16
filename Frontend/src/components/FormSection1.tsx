@@ -1,5 +1,5 @@
-import { Text, Grid, GridItem, Input, Box } from "@chakra-ui/react";
-
+import { Text, Grid, GridItem, Input, Box, Link, IconButton } from "@chakra-ui/react";
+import { FaQuestionCircle } from "react-icons/fa";
 import { useToast } from "@chakra-ui/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 import * as z from "zod";
 
-import { useState } from "react";
+//import { useState } from "react";
 
 import { DUserTokenInterface } from "../models/TokenMoodel";
 import FundRequest from "../classes/fund_request";
@@ -184,6 +184,7 @@ const FormSection1 = ({
               border={
                 errors.name ? `1px solid red` : `1px solid ${inputBorderColor}`
               }
+              data-testid="name-input"
             ></Input>
             {errors.name && (
               <Text fontSize="xs" color="red">
@@ -199,6 +200,7 @@ const FormSection1 = ({
               color={inputFieldTextColor}
               marginTop={2}
               border={`1px solid ${inputBorderColor}`}
+              data-testid="otherName1-input"
             ></Input>
 
             <Input
@@ -209,6 +211,7 @@ const FormSection1 = ({
               color={inputFieldTextColor}
               marginTop={2}
               border={`1px solid ${inputBorderColor}`}
+              data-testid="otherName2-input"
             ></Input>
             <Input
               {...register("otherName3")}
@@ -218,6 +221,7 @@ const FormSection1 = ({
               color={inputFieldTextColor}
               marginTop={2}
               border={`1px solid ${inputBorderColor}`}
+              data-testid="otherName3-input"
             ></Input>
             <Input
               {...register("otherName4")}
@@ -227,6 +231,8 @@ const FormSection1 = ({
               border={`1px solid ${inputBorderColor}`}
               color={inputFieldTextColor}
               marginTop={2}
+              
+              data-testid="otherName4-input"
             ></Input>
           </GridItem>
         </Grid>
@@ -262,6 +268,7 @@ const FormSection1 = ({
                   ? `1px solid red`
                   : `1px solid ${inputBorderColor}`
               }
+              data-testid="regname-input"
             ></Input>
             {errors.regname && (
               <Text fontSize="xs" color="red">
@@ -303,6 +310,7 @@ const FormSection1 = ({
               border={
                 errors.email ? `1px solid red` : `1px solid ${inputBorderColor}`
               }
+              data-testid="email-input"
             ></Input>
             {errors.email && (
               <Text fontSize="xs" color="red">
@@ -344,6 +352,7 @@ const FormSection1 = ({
                   ? `1px solid red`
                   : `1px solid ${inputBorderColor}`
               }
+              data-testid="contactNo-input"
             ></Input>
             {errors.contactNo && (
               <Text fontSize="xs" color="red">
@@ -380,6 +389,17 @@ const FormSection1 = ({
           SUBMIT
         </button>
       </form>
+      <Box position="fixed" bottom="4" right="4">
+        <Link href="/faqbot">
+          <IconButton
+            aria-label="FAQ"
+            icon={<FaQuestionCircle />}
+            size="lg"
+            colorScheme="teal"
+            isRound
+          />
+        </Link>
+      </Box>
     </Box>
   );
 };

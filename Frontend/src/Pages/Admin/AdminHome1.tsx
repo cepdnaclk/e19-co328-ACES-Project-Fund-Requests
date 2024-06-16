@@ -1,7 +1,7 @@
-import FooterSection from "../components/FooterSection";
-import Header from "../components/Header";
+import FooterSection from "../../components/FooterSection";
+import Header from "../../components/Header";
 //import NextButton from "../components/NextButton";
-import NextButtonAdmin from "./NextButtonAdmin";
+import NextButtonAdmin from "../NextButtonAdmin";
 //import { SetStateAction, useState } from "react";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
