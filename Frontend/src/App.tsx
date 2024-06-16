@@ -1,43 +1,29 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react"; // Import useEffect
-
-import {
-  Text,
-  Button,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Link,
-} from "@chakra-ui/react";
-
+import { useDisclosure } from "@chakra-ui/react";
 import { GoogleLogin } from "@react-oauth/google";
-
 import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 import StudentHome from "./Pages/StudentHome";
-import Admin from "./Pages/Admin";
-import AdminHome1 from "./Pages/AdminHome1";
-import AdminHome2 from "./Pages/AdminHome2";
-import AdminHome3 from "./Pages/AdminHome3";
+import Admin from "./Pages/Admin/Admin";
+import AdminWrapper from "./Pages/Admin/AdminWrapper";
+import AdminHome1 from "./Pages/Admin/AdminHome1";
+import AdminHome2 from "./Pages/Admin/AdminHome2";
+import AdminHome3 from "./Pages/Admin/AdminHome3";
 import Yes from "./Pages/Yes";
 import No from "./Pages/No";
 import Chatbotpage from "./Pages/Chatbotpage";
-import axios from "axios";
+import LoginModal from "./components/LoginModal";
 
 import { DUserTokenInterface } from "./models/TokenMoodel";
-
 import { PreviousRequest } from "./models/PreviousRequest";
 // import Yes from "./Pages/Yes";
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [userToken, setUserToken] = useState<DUserTokenInterface | null>(null);
-  const [previousRequest, setPreviousRequest] =
-    useState<PreviousRequest | null>(null);
+  const [previousRequest, setPreviousRequest] = useState<PreviousRequest | null>(null);
 
   useEffect(() => {
     if (userToken == null) {
@@ -45,7 +31,6 @@ function App() {
     } else {
       onClose();
       console.log("Closed the modal");
-
       axios
         .get(`http://localhost:5000/findrequest/${userToken.email}`)
         .then((response) => {
@@ -53,7 +38,8 @@ function App() {
           console.log(response.data);
         });
     }
-  }, [userToken]);
+  }, [userToken, onOpen, onClose]);
+
 
   return (
     <BrowserRouter>
@@ -62,7 +48,7 @@ function App() {
           index
           element={
             <>
-              <Modal
+              <LoginModal isOpen={isOpen} onClose={onClose} setUserToken={setUserToken} />              {/* <Modal
                 closeOnOverlayClick={false}
                 isOpen={isOpen}
                 onClose={onClose}
@@ -70,12 +56,13 @@ function App() {
                 isCentered
               >
                 <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(3px) " />
-                <ModalContent>
+                <ModalContent p="5">
                   <ModalHeader
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
+                    p = "2"
                   >
                     ACES Project Fund Requests
                   </ModalHeader>
@@ -85,7 +72,7 @@ function App() {
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <Text pb="3" fontSize="sm">
+                    <Text pb="4" fontSize="sm">
                       You need to login with your eng email
                     </Text>
                     <GoogleLogin
@@ -109,7 +96,7 @@ function App() {
                     />
                   </ModalBody>
                 </ModalContent>
-              </Modal>
+              </Modal>  */}
               <StudentHome
                 previousRequest={previousRequest}
                 userToken={userToken}
@@ -117,29 +104,9 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/admin"
-          element={
-            //   <>
-            //   <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="sm" isCentered>
-            //     <ModalOverlay
-            //       bg='blackAlpha.300'
-            //       backdropFilter='blur(3px) '
-            //     />
-            //     <ModalContent>
-            //       <ModalHeader>Modal Title</ModalHeader>
-            //       <ModalBody>
-            //         {/* Insert your Google login button or authentication component here */}
-            //         {/* You can use an external authentication library for Google OAuth */}
-            //         <Button colorScheme="blue">Login with Google</Button>
-            //       </ModalBody>
-            //     </ModalContent>
-            //   </Modal>
-
-            // </>
-            <Admin />
-          }
-        />
+        {/* <Route path="/" element={<Navigate to="/student" replace />} /> */}
+        <Route path="/student" element={<StudentHome previousRequest={previousRequest} userToken={userToken} />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/admin1" element={<AdminHome1 />} />
         <Route path="/admin2" element={<AdminHome2 />} />
         <Route path="/admin3" element={<AdminHome3 />} />
@@ -149,6 +116,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+} 
 
-export default App;
+export default App

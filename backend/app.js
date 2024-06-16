@@ -6,27 +6,31 @@ const fs = require("fs");
 const app = express();
 const dialogflowRoute = require('./routes/dialogflow');
 
-const bodyParser = require("body-parser");
-
-const emailService = require("./Services/emailService");
-
 const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+const path = require('path');
+// Load environment variables from a file located outside the backend folder
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
+const bodyParser = require("body-parser");
+const emailService = require("./Services/emailService");
 const Request = require("./models/fundrequest");
 
 app.use(express.static("./public"));
-
-app.use(cors());
-
+app.use(cors({
+  origin: 'http://localhost:5173',  // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use('/api', dialogflowRoute);
+
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://root:wasuki1999@cluster0.iq9l0yr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = process.env.MONGO_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -36,7 +40,7 @@ async function main() {
 
 app.get("/getall", async (req, res) => {
 
-  console.log("Getting all documents");
+  console.log('Received GET request to /getall');
 
   alldocs = await Request.find({});
 
@@ -46,10 +50,6 @@ app.get("/getall", async (req, res) => {
   } else {
     console.log("Error occured");
   }
-
-
-
-
 })
 
 app.get("/admin", (req, res) => {
@@ -269,10 +269,6 @@ app.get("/admin/:id", async (req, res) => {
   }
 });
 
-
-
-
-
 app.post("/approved", async (req, res) => {
 
   const data = req.body;
@@ -322,13 +318,14 @@ app.post("/denied", async (req, res) => {
   }
 });
 
-
-app.listen(5000, () => {
+//port 5000 || 3000
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log("Server started and running on port 5000");
 });
 
 // Close the MongoDB connection pool when the server is stopped
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
   mongoose.disconnect();
 });
 
