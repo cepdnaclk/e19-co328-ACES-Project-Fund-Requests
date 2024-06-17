@@ -1,0 +1,141 @@
+.logo {
+  width: 250px;
+}
+
+.nav_items {
+  font-size: 17px !important;
+}
+
+.mainHeader {
+}
+
+.sloganPara {
+  font-size: 18px;
+  font-family: sans-serif !important;
+  font-weight: 300;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.itemImg {
+  border: 1px solid #4e4e4ea8;
+  height: 30% !important;
+  width: 60% !important;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.fetures_section {
+  margin: 50px 0px !important;
+}
+
+.about-area_padding {
+  padding: 0px 0px 100px 0px !important;
+}
+
+.img_aboutus {
+  size: cover;
+  height: 500px;
+}
+
+.callto-area {
+  background: url(../img/wareghouse.jpg) center !important;
+  background-size: cover !important;
+}
+
+.new_styles_section_title {
+  position: relative;
+  z-index: 100;
+  font-size: 40px !important;
+  color: #ddd !important;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+}
+
+.video_overlay {
+  z-index: 5;
+  background: rgba(0, 4, 31, 0.808) !important;
+}
+
+.vid {
+  position: relative;
+  z-index: 10;
+}
+
+.video_section {
+  padding: 80px 0 120px 0 !important;
+}
+
+.video_section--text {
+  margin-bottom: 70px;
+}
+
+.sticky-wrapper {
+  z-index: 200;
+}
+
+.sticky-wrapper.is-sticky .default-header {
+  box-shadow: none !important;
+}
+
+.about_us_banner {
+  background: url(../img/lab.jpg) no-repeat;
+  background-size: cover;
+}
+
+.about_us_overlay {
+  background: rgba(2, 0, 17, 0.801) !important;
+}
+
+.footer-h4 {
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  padding-top: 100px !important;
+}
+
+.starting_para {
+  font-size: 20px !important;
+  margin-top: 20px;
+}
+
+.first-section {
+  padding: 150px 10px;
+}
+
+.fetures-h2 {
+  margin-bottom: 80px;
+}
+
+.high-level-arch {
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+.high-level-arch-container {
+  margin-top: 30px;
+}
+
+.footer-section-about {
+  padding-top: 50px !important;
+}
+
+.itemImg-team {
+  width: 100% !important;
+  padding: 10px;
+  border-radius: 200px;
+  margin-bottom: 20px;
+}
+
+.image-col {
+  max-width: 20%;
+}
+
+.footer-team {
+  margin-bottom: 50px !important;
+}
+
+.section-gap-bottom-about {
+  padding: 100px 0;
+}

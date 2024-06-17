@@ -17,11 +17,16 @@ const emailService = require("./Services/emailService");
 const Request = require("./models/fundrequest");
 
 app.use(express.static("./public"));
+<<<<<<< HEAD
+
+app.use(cors());
+=======
 app.use(cors({
   origin: 'http://localhost:5173',  // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
 
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -30,7 +35,12 @@ app.use('/api', dialogflowRoute);
 
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
+<<<<<<< HEAD
+const mongoDB =
+  "mongodb+srv://priyankarasajith31:1MULV3OpJON5hCnL@cluster0.lxel2jn.mongodb.net/";
+=======
 const mongoDB = process.env.MONGO_URI;
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -39,18 +49,26 @@ async function main() {
 }
 
 app.get("/getall", async (req, res) => {
+<<<<<<< HEAD
+  console.log("Getting all documents");
+=======
 
   console.log('Received GET request to /getall');
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
 
   alldocs = await Request.find({});
 
   if (alldocs) {
     console.log("all: ", alldocs);
-    res.status(200).json({ docs: alldocs })
+    res.status(200).json({ docs: alldocs });
   } else {
     console.log("Error occured");
   }
+<<<<<<< HEAD
+});
+=======
 })
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
 
 app.get("/admin", (req, res) => {
   res.send("Hi there");
@@ -181,32 +199,32 @@ app.post("/fundRequest", async (req, res) => {
 
 async function deleteRequestByRequester(requesterName) {
   try {
-    const deletedRequest = await Request.findOneAndDelete({ requester: requesterName }).exec();
+    const deletedRequest = await Request.findOneAndDelete({
+      requester: requesterName,
+    }).exec();
     if (deletedRequest) {
       // Request with the specified requester name was found and deleted
-      console.log('Request deleted:', deletedRequest);
+      console.log("Request deleted:", deletedRequest);
       return deletedRequest;
     } else {
       // Request with the specified requester name was not found
-      console.log('Request not found.');
+      console.log("Request not found.");
       return null;
     }
   } catch (error) {
-    console.error('Error deleting request:', error);
+    console.error("Error deleting request:", error);
     throw error;
   }
 }
 
 app.get("/delete/:requesterEmail", async (req, res) => {
-
   requesterEmail = req.params.requesterEmail;
   console.log(requesterEmail);
 
-  const deletedRequest = await deleteRequestByRequester(requesterEmail)
+  const deletedRequest = await deleteRequestByRequester(requesterEmail);
 
-  res.status(200).json({ deletedRequest })
-
-})
+  res.status(200).json({ deletedRequest });
+});
 
 // GEt data from the database
 app.get("/find/:id", async (req, res) => {
@@ -229,15 +247,15 @@ async function searchRequestByRequester(requesterEmail) {
     const request = await Request.findOne({ requester: requesterEmail }).exec();
     if (request) {
       // Request with the specified requester name was found
-      console.log('Request found:', request);
+      console.log("Request found:", request);
       return request;
     } else {
       // Request with the specified requester name was not found
-      console.log('Request not found.');
+      console.log("Request not found.");
       return null;
     }
   } catch (error) {
-    console.error('Error searching for request:', error);
+    console.error("Error searching for request:", error);
     throw error;
   }
 }
@@ -246,14 +264,14 @@ app.get("/findrequest/:requesterEmail", async (req, res) => {
   requesterEmail = req.params.requesterEmail;
   console.log(requesterEmail);
 
-  const previousRequest = await searchRequestByRequester(requesterEmail)
+  const previousRequest = await searchRequestByRequester(requesterEmail);
 
-  res.status(200).json(previousRequest)
-})
+  res.status(200).json(previousRequest);
+});
 
 app.get("/admin/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(id)
+  console.log(id);
   try {
     const foundRequest = await getRequestDataByID(id);
 
@@ -270,24 +288,30 @@ app.get("/admin/:id", async (req, res) => {
 });
 
 app.post("/approved", async (req, res) => {
-
   const data = req.body;
   const foundRequest = await getRequestDataByID(data.id);
   if (foundRequest !== null) {
     try {
-      foundRequest.aces_response = 'approved';
+      foundRequest.aces_response = "approved";
       foundRequest.bill_settled = data.billSettle;
       foundRequest.report_submitted = data.reportSubmit;
-      foundRequest.reason = '';
+      foundRequest.reason = "";
 
-      const updatedRequest = await Request.findByIdAndUpdate(data.id, foundRequest, { new: true });
+      const updatedRequest = await Request.findByIdAndUpdate(
+        data.id,
+        foundRequest,
+        { new: true }
+      );
       console.log("Updated Request:", updatedRequest);
 
-      res.status(200).json({ success: true, message: "successfully approved !" });
-
+      res
+        .status(200)
+        .json({ success: true, message: "successfully approved !" });
     } catch (error) {
       console.error("Error updating request:", error);
-      res.status(500).json({ success: false, message: "Internal server error" });
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
     }
   } else {
     res.status(404).json({ success: false, message: "Data not found" });
@@ -295,38 +319,48 @@ app.post("/approved", async (req, res) => {
 });
 
 app.post("/denied", async (req, res) => {
-
   const data = req.body;
   const foundRequest = await getRequestDataByID(data.id);
   if (foundRequest !== null) {
     try {
-      foundRequest.aces_response = 'denied';
+      foundRequest.aces_response = "denied";
       foundRequest.reason = data.reason;
-      foundRequest.bill_settled = '';
-      foundRequest.report_submitted = '';
-      const updatedRequest = await Request.findByIdAndUpdate(data.id, foundRequest, { new: true });
+      foundRequest.bill_settled = "";
+      foundRequest.report_submitted = "";
+      const updatedRequest = await Request.findByIdAndUpdate(
+        data.id,
+        foundRequest,
+        { new: true }
+      );
       console.log("Updated Request:", updatedRequest);
 
       res.status(200).json({ success: true, message: "successfully denied !" });
-
     } catch (error) {
       console.error("Error updating request:", error);
-      res.status(500).json({ success: false, message: "Internal server error" });
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error" });
     }
   } else {
     res.status(404).json({ success: false, message: "Data not found" });
   }
 });
 
+<<<<<<< HEAD
+app.listen(5000, () => {
+=======
 //port 5000 || 3000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
   console.log("Server started and running on port 5000");
 });
 
 // Close the MongoDB connection pool when the server is stopped
+<<<<<<< HEAD
+process.on("SIGINT", function () {
+=======
 process.on('SIGINT', function () {
+>>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
   mongoose.disconnect();
 });
-
-
