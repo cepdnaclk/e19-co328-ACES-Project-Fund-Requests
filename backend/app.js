@@ -4,43 +4,37 @@ const axios = require("axios");
 const multer = require("multer");
 const fs = require("fs");
 const app = express();
-const dialogflowRoute = require('./routes/dialogflow');
+const dialogflowRoute = require("./routes/dialogflow");
 
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-const path = require('path');
+const dotenv = require("dotenv");
+const path = require("path");
 // Load environment variables from a file located outside the backend folder
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const bodyParser = require("body-parser");
 const emailService = require("./Services/emailService");
 const Request = require("./models/fundrequest");
 
 app.use(express.static("./public"));
-<<<<<<< HEAD
 
-app.use(cors());
-=======
-app.use(cors({
-  origin: 'http://localhost:5173',  // Replace with your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use('/api', dialogflowRoute);
+app.use("/api", dialogflowRoute);
 
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
-<<<<<<< HEAD
-const mongoDB =
-  "mongodb+srv://priyankarasajith31:1MULV3OpJON5hCnL@cluster0.lxel2jn.mongodb.net/";
-=======
+
 const mongoDB = process.env.MONGO_URI;
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -49,12 +43,7 @@ async function main() {
 }
 
 app.get("/getall", async (req, res) => {
-<<<<<<< HEAD
-  console.log("Getting all documents");
-=======
-
-  console.log('Received GET request to /getall');
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
+  console.log("Received GET request to /getall");
 
   alldocs = await Request.find({});
 
@@ -64,12 +53,7 @@ app.get("/getall", async (req, res) => {
   } else {
     console.log("Error occured");
   }
-<<<<<<< HEAD
 });
-=======
-})
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
-
 app.get("/admin", (req, res) => {
   res.send("Hi there");
 });
@@ -346,21 +330,12 @@ app.post("/denied", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.listen(5000, () => {
-=======
-//port 5000 || 3000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
   console.log("Server started and running on port 5000");
 });
 
 // Close the MongoDB connection pool when the server is stopped
-<<<<<<< HEAD
 process.on("SIGINT", function () {
-=======
-process.on('SIGINT', function () {
->>>>>>> 488be5ba0dd8c8e80864526c5daa2c312f725492
   mongoose.disconnect();
 });
