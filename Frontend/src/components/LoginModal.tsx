@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, Text, Button, useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, Text, Button } from "@chakra-ui/react";
 import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { DUserTokenInterface } from "../models/TokenMoodel";
@@ -12,19 +12,36 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, setUserToken }) => {
-  const [loginType, setLoginType] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleLoginSuccess = (credentialResponse: CredentialResponse) => {
     const decodedUserToken: DUserTokenInterface = jwt_decode(credentialResponse.credential!);
-    setUserToken(decodedUserToken);
-    onClose();
+    const email = decodedUserToken.email.toLowerCase(); // Ensure email is lowercase for consistent comparison
 
-    if (loginType === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/");
+    // Check if the email is within the accepted range for students
+    if (email.match(/^e19\d{3}@eng\.pdn\.ac\.lk$/) || email.match(/^e20\d{3}@eng\.pdn\.ac\.lk$/)) {
+      const numberPart = parseInt(email.substring(1, 6), 10); // Extract and convert the numeric part
+      if ((numberPart >= 19001 && numberPart <= 19303 || numberPart >= 19305 && numberPart <= 19505) || (numberPart >= 20001 && numberPart <= 20505)) { // Adjusted range for students
+        setUserToken(decodedUserToken);
+        onClose();
+        navigate("/");
+        return;
+      }
     }
+
+    // Check if the email is an admin email or e19304@eng.pdn.ac.lk
+    if (email === "asithab@eng.pdn.ac.lk" || 
+        email === "roshanr@eng.pdn.ac.lk" || 
+        email === "e19304@eng.pdn.ac.lk") {
+      setUserToken(decodedUserToken);
+      onClose();
+      navigate("/admin");
+      return;
+    }
+
+    // If neither student nor admin email, show error
+    setErrorMessage("You must use a valid @eng.pdn.ac.lk email to login.");
   };
 
   return (
@@ -35,23 +52,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, setUserToken }
           ACES Project Fund Requests
         </ModalHeader>
         <ModalBody display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-          {loginType === null ? (
-            <>
-              <Text pb="4" fontSize="sm">Select login type</Text>
-              <Button mb="2" onClick={() => setLoginType("user")}>Login as Student</Button>
-              <Button onClick={() => setLoginType("admin")}>Login as Admin</Button>
-            </>
-          ) : (
-            <>
-              <Text pb="4" fontSize="sm">You need to login with your eng email</Text>
-              <GoogleLogin
-                onSuccess={handleLoginSuccess}
-                onError={() => {
-                  onClose();
-                  console.log("Login Failed");
-                }}
-              />
-            </>
+          <Text pb="4" fontSize="sm">You need to login with your eng email</Text>
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={() => {
+              onClose();
+              console.log("Login Failed");
+            }}
+          />
+          {errorMessage && (
+            <Text color="red.500" pt="4">
+              {errorMessage}
+            </Text>
           )}
         </ModalBody>
       </ModalContent>
