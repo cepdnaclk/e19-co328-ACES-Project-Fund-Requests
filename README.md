@@ -47,4 +47,5 @@ A class diagram is a type of static structure diagram in the Unified Modeling La
 
 A sequence diagram is a type of UML diagram that illustrates the sequence of interactions between objects or components in a system over time. It shows how different parts of the system collaborate to perform a specific function by depicting the order of messages exchanged between them. In the context of the ACES fund management system, the sequence diagram visualizes the process where a student submits a fund request through a web application, the request is stored in a database, authorities review and update the request status, and a chatbot provides feedback to the student. This diagram helps in understanding the workflow, ensuring efficient communication, and maintaining a clear audit trail of the interactions involved in the fund request process.[Sequence Diagram](https://lucid.app/lucidchart/85bfdd32-db77-44b5-8084-d4ade151f180/edit?viewport_loc=-279%2C-1960%2C2306%2C1067%2C0_0&invitationId=inv_18cd1aae-5a60-4284-b605-9f3cb9013659)
 
-
+## Software Architecture
+![Software Architecture](https://github.com/cepdnaclk/e19-co328-ACES-Project-Fund-Requests/assets/111074993/07c6655f-b779-44fb-b943-bf8efd0e7e3d)
