@@ -3,6 +3,8 @@ const cors = require("cors");
 const axios = require("axios");
 const multer = require("multer");
 const fs = require("fs");
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const app = express();
 const dialogflowRoute = require('./routes/dialogflow');
 
@@ -25,20 +27,99 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Library API",
+      version: "1.0.0",
+      description: "An API to make fund requests for ACES projects"
+    },
+    servers: [
+      {
+        url: "http://localhost:5000"
+      }
+    ]
+  },
+  apis: ["./app.js"]
+};
+
+const specs = swaggerJsDoc(options);
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use('/api', dialogflowRoute);
+app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(specs));
 
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://root:Jeeve123@cluster0.zrs0mqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = process.env.MONGO_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
   console.log("Database connected");
 }
+
+
+/**
+ * 
+ * @swagger
+ * components:
+ *    schemas:
+ *      requestData:
+ *        type: object
+ *        required: 
+ *          - project_title
+ *          - project_type
+ *          - applicants_names
+ *          - requester
+ *          - contact_no
+ *        properties:
+ *          id:
+ *            type: string
+ *            description: The auto-generated id of the request
+ *          project_title:
+ *            type: string
+ *            description: The title of the project
+ *          project_type:
+ *            type: string
+ *            description: Type of the project
+ *          applicants:
+ *             type: list of strings
+ *             description: List of students who apply for the project
+ *          contact_no:
+ *              type: string
+ *              description: phone number of one person to contact
+ *          requester:
+ *              type: string
+ *              description: name of the requester
+ *          starting_date:
+ *              type: date
+ *              description: date the project starts
+ *    successful:
+ *      type: object
+ *      properties:
+ *        description: successful request
+ *        type: boolean
+ *       
+ */
+
+/**
+ * @swagger
+ * /getall:
+ *  get:
+ *    summary: Returns the list of all the requests
+ *    responses:
+ *      200:
+ *        description: The list of the requests
+ *        contents:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/requestData'
+ *          
+ */
+
 
 app.get("/getall", async (req, res) => {
   console.log('Received GET request to /getall');
@@ -51,6 +132,17 @@ app.get("/getall", async (req, res) => {
     res.status(500).json({ success: false, error: "Internal server error" });
   }
 });
+
+/**
+ * @swagger
+ * /admin:
+ *  get:
+ *    summary: Say Hi
+ *    responses:
+ *      200:
+ *        description: Say Hi
+ *        contents: text
+ */
 
 app.get("/admin", (req, res) => {
   res.send("Hi there");
@@ -73,6 +165,19 @@ const upload = multer({
 
 app.use(express.urlencoded({ extended: false })); // handle POST requests body. Handle data in the type "application/x-www-form-urlencoded"
 app.use(express.json()); // Handle the data in the type "application/json"
+
+/**
+ * @swagger
+ * /:
+ * get:
+ *  summary: say successful
+ *  responses:
+ *    200:
+ *      description: successful
+ *      content: 
+ *        type: boolean
+ *        
+ */
 
 app.get("/", (req, res) => {
   res.status(200).json({ success: true });
@@ -101,6 +206,33 @@ async function getRequestDataByID(id) {
 }
 
 // Take the fund request details and save them in the database
+
+/**
+ * @swagger
+ * /fundRequest:
+ *  post:
+ *    summary: Create a new fund request
+ *    requestBody:
+ *      required: true
+ *      content: 
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/requestData'
+ *    responses:
+ *      200:
+ *        description: The new request was successfully created
+ *        content: 
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/requestData'
+ *      500:
+ *        description: Some Server Error
+ *      400:
+ *        description: Bad request, not filling the form properly
+ */
+
+
+
 app.post("/fundRequest", async (req, res) => {
   const data = req.body;
   console.log("receiving data");
@@ -176,6 +308,26 @@ async function deleteRequestByRequester(requesterName) {
     throw error;
   }
 }
+
+/**
+ * @swagger
+ * /delete/{requesterEmail}:
+ *  get:
+ *    summary: delete record
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/requestData'
+ *    responses:
+ *      200:
+ *        description: deleted the content
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/requestData' 
+ */
 
 app.get("/delete/:requesterEmail", async (req, res) => {
   const requesterEmail = req.params.requesterEmail;
