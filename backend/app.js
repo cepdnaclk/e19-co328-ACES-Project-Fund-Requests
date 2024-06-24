@@ -6,13 +6,13 @@ const fs = require("fs");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const app = express();
-const dialogflowRoute = require('./routes/dialogflow');
+const dialogflowRoute = require("./routes/dialogflow");
 
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-const path = require('path');
+const dotenv = require("dotenv");
+const path = require("path");
 // Load environment variables from a file located outside the backend folder
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const bodyParser = require("body-parser");
 const emailService = require("./Services/emailService");
@@ -49,7 +49,6 @@ const specs = swaggerJsDoc(options);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use('/api', dialogflowRoute);
-app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(specs));
 
 // Set up mongoose connection
 mongoose.set("strictQuery", false);

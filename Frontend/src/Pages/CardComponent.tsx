@@ -9,9 +9,6 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-//import ViewMoreButton from "./ViewMoreButton";
-// import { Link } from "react-router-dom";
-//import cardImage from "../assets/images/cardImage.webp"
 
 interface CardComponentProps {
   cardImage: string;
