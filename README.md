@@ -8,6 +8,9 @@ ___
 ## ☀ Project Overview
 The ACES Project Fund Management System is a web-based application designed to streamline and automate the process of managing fund requests within an organization. The system is built with a focus on user-friendliness, security, and scalability, and is designed to integrate seamlessly with existing accounting or financial systems. 🖥 
 
+## Data and Control Flow Diagram
+  <img src="./docs/images/Data Flow.png" alt="Data Flow" />
+
 ## 🗝 Key Features
 - User Management: The system supports registration and login for Administrators, Fund Requesters, and Approvers, each with different access levels and functionalities.
 - Fund Request Handling: Fund Requesters can submit requests specifying the purpose, amount, and any supporting documents. These requests can then be approved or rejected by Approvers through a single or multilevel approval process.
