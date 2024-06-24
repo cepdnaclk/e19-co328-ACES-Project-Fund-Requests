@@ -4,13 +4,13 @@ const axios = require("axios");
 const multer = require("multer");
 const fs = require("fs");
 const app = express();
-const dialogflowRoute = require('./routes/dialogflow');
+const dialogflowRoute = require("./routes/dialogflow");
 
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-const path = require('path');
+const dotenv = require("dotenv");
+const path = require("path");
 // Load environment variables from a file located outside the backend folder
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const bodyParser = require("body-parser");
 const emailService = require("./Services/emailService");
@@ -28,11 +28,11 @@ app.use(cors({
 // Increase the request size limit to 50MB (or set it to your desired limit)
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use('/api', dialogflowRoute);
+app.use("/api", dialogflowRoute);
 
 // Set up mongoose connection
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://root:Jeeve123@cluster0.zrs0mqb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = process.env.MONGO_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
