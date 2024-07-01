@@ -35,7 +35,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
     if (
       email === "asithab@eng.pdn.ac.lk" ||
       email === "roshanr@eng.pdn.ac.lk" ||
-      email === "e19111@eng.pdn.ac.lk"
+      email === "e19304@eng.pdn.ac.lk"
     ) {
       setUserToken(decodedUserToken);
       onClose();
