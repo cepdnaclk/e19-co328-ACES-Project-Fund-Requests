@@ -1,6 +1,9 @@
 name: Unit Testing CI 
 
-on: [pull_request]
+on:
+  push:
+    paths:
+      - 'Frontend/'
 
 jobs:
   tests:
