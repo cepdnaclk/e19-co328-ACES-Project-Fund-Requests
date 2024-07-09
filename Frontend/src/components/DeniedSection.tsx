@@ -5,7 +5,9 @@ import { DUserTokenInterface } from "../models/TokenMoodel";
 import axios from "axios";
 
 interface Props {
+  
   userToken: DUserTokenInterface | null;
+  
 }
 
 const DeniedSection = ({ userToken }: Props) => {
