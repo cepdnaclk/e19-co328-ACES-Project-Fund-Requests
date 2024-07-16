@@ -1,4 +1,4 @@
-import { Text, Grid, GridItem, Input, Box, Button, Link, IconButton } from "@chakra-ui/react";
+import { Text, Grid, GridItem, Input, Box, Link, IconButton } from "@chakra-ui/react";
 import { FaQuestionCircle } from "react-icons/fa";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -36,8 +36,8 @@ type formData = z.infer<typeof schema>;
 const FormSection3 = ({
   onFinalSubmit,
   requestObject,
-  onSetRequestObject,
-  onFinish,
+  //onSetRequestObject,
+  //onFinish,
 }: Props) => {
   const toast = useToast();
   const [isFinished, setIsFinished] = useState(false);
