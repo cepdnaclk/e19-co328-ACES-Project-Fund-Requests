@@ -1,0 +1,29 @@
+name: Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          path: e19-CO328-ACES-Project-Fund-Requests  # Adjust to match your repository structure
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Adjust to the Node.js version used in your project
+
+      - name: Install dependencies
+        run: |
+          cd e19-CO328-ACES-Project-Fund-Requests/Frontend
+          npm install
+      - name: Run tests
+        run: |
+          cd e19-CO328-ACES-Project-Fund-Requests/Frontend
+          npm install axios-mock-adapter --save-dev
+          npm test
