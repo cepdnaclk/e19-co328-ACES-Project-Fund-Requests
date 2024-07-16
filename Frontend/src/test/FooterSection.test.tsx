@@ -18,7 +18,7 @@ describe('FooterSection Component', () => {
 
   it('displays the last build date', () => {
     render(<FooterSection />);
-    const buildDateText = screen.getByText(/Last Build: 30\/08\/2023/i);
+    const buildDateText = screen.getByText(/Last Build: 13\/06\/2024/i);
     expect(buildDateText).toBeTruthy();
   });
 });
